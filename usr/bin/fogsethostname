@@ -1,0 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf_8 -*-
+
+"""
+FOG GNU/Linux pseudo client service
+GetHostnameByMaC
+"""
+
+from FOG import client
+
+client().setHostName()

@@ -1,0 +1,10 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+"""
+FOG GNU/Linux pseudo client service
+usertracking.report
+"""
+from FOG import client
+
+client().userTracking()
