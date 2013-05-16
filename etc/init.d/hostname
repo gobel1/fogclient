@@ -1,0 +1,40 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:		hostname
+# Required-Start:	$local_fs $remote_fs $network $syslog $network-manager
+# Default-Start:	2 3 4 5
+# Default-Stop:		0 1 6
+# X-Interactive:	false
+# Short-Description:	Get & Set Hostname
+# Description:		Getting and Setting Hostname from FOG Server
+### END INIT INFO
+
+#Author: gregory.epp@univ-provence.fr
+
+[ -x /bin/hostname ] || exit 0;
+[ -x /usr/bin/fogsethostname ] || exit 0;
+. /lib/lsb/init-functions;
+
+#function setHostname(){
+#	log_action_begin_msg "Setting Hostname";
+#	/bin/hostname -b -F /etc/hostname;
+#	log_action_end_msg $?;
+#}
+
+function getHostname(){
+	if [[ ! -s /etc/hostname ]];then
+		log_action_begin_msg "Getting Hostname From Server";
+		sleep 10
+		/usr/bin/fogsethostname;
+		log_action_end_msg $?;
+		#setHostname;
+	#else
+	#	setHostname;
+	fi
+}
+
+case $1 in
+	start) getHostname; ;;
+	stop);;
+	*) log_success_msg "Usage: $0 {start|stop}"; ;;
+esac
