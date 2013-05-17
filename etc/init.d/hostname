@@ -9,8 +9,6 @@
 # Description:		Getting and Setting Hostname from FOG Server
 ### END INIT INFO
 
-#Author: gregory.epp@univ-provence.fr
-
 [ -x /bin/hostname ] || exit 0;
 [ -x /usr/bin/fogsethostname ] || exit 0;
 . /lib/lsb/init-functions;
